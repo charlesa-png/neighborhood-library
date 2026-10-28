@@ -32,15 +32,30 @@ public class NeighborhoodLibrary {
     Scanner scanner = new Scanner(System.in);
 
     System.out.println("Welcome to Java Library! What would you like to do?");
-    System.out.println("Please choose from the following options:\n\t\t[1] Browse available books\n\t\t[2] Show checked out books\n\t\t[3] Exit");
+    System.out.println("Please choose from the following options:\n\t[1] Browse available books\n\t[2] Show checked out books\n\t[3] Exit");
     int choice = scanner.nextInt();
     scanner.nextLine();
     if (choice == 1){
         for (int i = 0; i < books.length; i++) {
             if (books[i].isCheckedOut() == false){
-                System.out.println(books[i].getTitle());
+                System.out.println(books[i].getTitle() + "\n\tID :" + books[i].getId() + "\n\tISBN" + books[i].getIsbn());
             }
         }
+        System.out.println("Would you like to check one out? Please enter (Y/N).");
+        String answer = scanner.nextLine();
+        if(answer.equalsIgnoreCase("Y")){
+            System.out.println("Please enter the title of the book you'd like to check out.");
+            String bookTitle = scanner.nextLine();
+        }else if (answer.equalsIgnoreCase("N")){
+
+        }
+    }else if(choice == 2){
+
+    } else if (choice == 3) {
+        System.out.println("See you next time!");
+    } else while (choice != 1 || choice != 2 || choice != 3){
+        System.out.println("Please enter 1, 2, or 3.");
+        choice= scanner.nextInt();
     }
     }
 }
