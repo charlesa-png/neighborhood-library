@@ -37,18 +37,21 @@ public class NeighborhoodLibrary {
         int choice = scanner.nextInt();
         scanner.nextLine();
 
-        switch (choice) {
-            case 1 -> {
-                listAvailableBooks(books, scanner);
-                break;
+        boolean running = true;
+        while (running){
+            switch (choice) {
+                case 1 -> {
+                    listAvailableBooks(books, scanner);
+                }
+                case 2 -> {
+                    listCheckedOutBooks(books, scanner);
+                }
+                case 3 -> {
+                    System.out.println("See you next time!");
+                    running = false;
+                }
+                default -> System.out.println("Invalid Choice! Please enter 1, 2, or 3.");
             }
-            case 2 -> {
-                listCheckedOutBooks();
-                break;
-            }
-
-            case 3 -> System.out.println("See you next time!");
-            default -> System.out.println("Invalid Choice! Please enter 1, 2, or 3.");
         }
 
 
@@ -71,10 +74,14 @@ public class NeighborhoodLibrary {
             String bookTitle = scanner.nextLine().trim();
 
             for (Book book : books) {
-                if (bookTitle.equalsIgnoreCase(book.getTitle())) {
+                if (bookTitle.equalsIgnoreCase(book.getTitle()) && book.isCheckedOut){
+                    System.out.println("Sorry, that book is currently checked out to " + book.checkedOutTo + ". Please choose another book or try again later.");
+                }else if (bookTitle.equalsIgnoreCase(book.getTitle()) && book.isCheckedOut == false) {
                     String borrowedBook = book.getTitle();
                     book.checkOut(name);
-                    System.out.println("You have checked out" + borrowedBook + ". Have a good day!");
+                    System.out.println("You have checked out " + borrowedBook + ". Have a good day!");
+                }else{
+                    System.out.println("Sorry, I couldn't find that title! Please choose from our available books.");
                 }
             }
         }else if (answer.equalsIgnoreCase("N")) {
@@ -84,11 +91,35 @@ public class NeighborhoodLibrary {
         }
     }
 
-    public static void listCheckedOutBooks(){
-        System.out.println("Here are the books that are currently checked out:\n");
-        for (int i = 0; i < books.length; i++){
-            System.out.println(books[i].getTitle + " is checked out to " + books[i].getIsCheckedOutTo);
+    public static void listCheckedOutBooks(Book[] books, Scanner scanner){
+        for (Book book : books) {
+            if (book.isCheckedOut) {
+                System.out.println("Here are the books that are currently checked out:\n");
+                System.out.println(book.getTitle() + " is checked out to " + book.getCheckedOutTo());
+
+                System.out.println("Press C to check a book in or X to go back.");
+                String input = scanner.nextLine();
+
+                if (input.equalsIgnoreCase("C")){
+                    System.out.println("Please enter the ID of the book you're checking in.");
+                    int checkingIn = scanner.nextInt();
+
+                    if (book.getId() == checkingIn){
+                        book.isCheckedOut = false;
+                        book.checkedOutTo = " ";
+                        System.out.println("Thank you, have a great day!");
+                    }else{
+                        System.out.println("Invalid ID number, please try again.");
+                    }
+                } else if (input.equalsIgnoreCase("X")){
+                    System.out.println("Returning home...");
+                }else {
+                    System.out.println("Please enter C or X");
+                }
+
+            }
         }
+        System.out.println("All titles are available at this time. Why not check one out?");
 
 
     }
