@@ -9,14 +9,12 @@ public class Book {
 
     public Book(int id,
                 String isbn,
-                String title,
-                boolean isCheckedOut,
-                String checkedOutTo){
+                String title){
         this.id = id;
         this.isbn = isbn;
         this.title = title;
-        this.isCheckedOut = isCheckedOut;
-        this.checkedOutTo = checkedOutTo;
+        this.isCheckedOut = false;
+        this.checkedOutTo = "";
     }
 
     public int getId() {

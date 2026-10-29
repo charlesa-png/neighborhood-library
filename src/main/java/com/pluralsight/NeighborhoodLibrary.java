@@ -4,58 +4,93 @@ import java.util.Scanner;
 
 public class NeighborhoodLibrary {
     public static void main(String[] args) {
-        Book theMaid = new Book(51800,"978-0-593-35617-3","The Maid",false,"");
-        Book theGuestList = new Book(51699,"978-0-06-286894-7","The Guest List",false,"");
-        Book theSilentPatient = new Book(51799,"978-1-250-30170-3","The Silent Patient",false,"");
-        Book dontLetThemIn = new Book(52999,"978-1-6680-3387-6","Don't Let Them In", false,"");
-        Book theOnlyOneLeft = new Book(51801, "978-0-593-18324-3","The Only One Left",false,"");
-        Book theHunter = new Book(51900, "978-0-593-49345-8","The Hunter",false,"");
-        Book aFlickerInTheDark = new Book(51792,"978-1-250-80374-9","A Flicker in the Dark",false,"");
-        Book onlyIfYoureLucky = new Book(51920,"978-1-250-88795-5","Only If You're Lucky",false,"");
-        Book whatHaveYouDone = new Book(5300,"978-0-593-48996-3","What Have You Done",false,"");
-        Book daughterOfMine = new Book(52899,"978-1-6680-1044-0","Daughter of Mine",false,"");
-        Book youLikeItDarker = new Book(5301,"978-1-6680-3771-3","You Like It Darker",false,"");
-        Book theOrphanageByTheLake = new Book(51795,"978-1-4642-4636-4","The Orphanage By the Lake",false,"");
-        Book patientTwelve = new Book(9000,"978-1-78799-821-6","Patient Twelve",false,"");
-        Book petiteAnglaise = new Book(52493,"978-0-385-52280-9","Petite Anglaise", false,"");
-        Book safeEnough = new Book(52893, "978-1-61316-566-9","Safe Enough",false,"");
-        Book sisters = new Book(50892,"978-0-545-74951-0","Sisters",false,"");
-        Book diaryOfAWimpyKid = new Book(51295,"978-0-810-99313-6","Diary of a Wimpy Kid",false,"");
-        Book theWeddingPlannersDaughter = new Book(50399,"978-1-416-91854-7", "The Wedding Planner's Daughter",false, "");
-        Book kidnapped = new Book(50499,"978-0-4398-4777-3", "Kidnapped",false,"");
-        Book numberTheStars = new Book(22753,"978-0-4402-2753-3","Number the Stars",false,"");
-        Book theHungerGames = new Book(50899,"978-0-439-02352-8","The Hunger Games",false,"");
-        Book ofMiceAndMen = new Book(51100,"978-0-14-017739-8","Of Mice and Men",false,"");
-        Book andThenThereWereNone = new Book(51395,"978-312-33087-3","And Then There Were None",false,"");
+        Book theMaid = new Book(51800, "978-0-593-35617-3", "The Maid");
+        Book theGuestList = new Book(51699, "978-0-06-286894-7", "The Guest List");
+        Book theSilentPatient = new Book(51799, "978-1-250-30170-3", "The Silent Patient");
+        Book dontLetThemIn = new Book(52999, "978-1-6680-3387-6", "Don't Let Them In");
+        Book theOnlyOneLeft = new Book(51801, "978-0-593-18324-3", "The Only One Left");
+        Book theHunter = new Book(51900, "978-0-593-49345-8", "The Hunter");
+        Book aFlickerInTheDark = new Book(51792, "978-1-250-80374-9", "A Flicker in the Dark");
+        Book onlyIfYoureLucky = new Book(51920, "978-1-250-88795-5", "Only If You're Lucky");
+        Book whatHaveYouDone = new Book(5300, "978-0-593-48996-3", "What Have You Done");
+        Book daughterOfMine = new Book(52899, "978-1-6680-1044-0", "Daughter of Mine");
+        Book youLikeItDarker = new Book(5301, "978-1-6680-3771-3", "You Like It Darker");
+        Book theOrphanageByTheLake = new Book(51795, "978-1-4642-4636-4", "The Orphanage By the Lake");
+        Book patientTwelve = new Book(9000, "978-1-78799-821-6", "Patient Twelve");
+        Book petiteAnglaise = new Book(52493, "978-0-385-52280-9", "Petite Anglaise");
+        Book safeEnough = new Book(52893, "978-1-61316-566-9", "Safe Enough");
+        Book sisters = new Book(50892, "978-0-545-74951-0", "Sisters");
+        Book diaryOfAWimpyKid = new Book(51295, "978-0-810-99313-6", "Diary of a Wimpy Kid");
+        Book theWeddingPlannersDaughter = new Book(50399, "978-1-416-91854-7", "The Wedding Planner's Daughter");
+        Book kidnapped = new Book(50499, "978-0-4398-4777-3", "Kidnapped");
+        Book numberTheStars = new Book(22753, "978-0-4402-2753-3", "Number the Stars");
+        Book theHungerGames = new Book(50899, "978-0-439-02352-8", "The Hunger Games");
+        Book ofMiceAndMen = new Book(51100, "978-0-14-017739-8", "Of Mice and Men");
+        Book andThenThereWereNone = new Book(51395, "978-312-33087-3", "And Then There Were None");
 
-        Book[] books = {theMaid,theGuestList,theSilentPatient,dontLetThemIn,theOnlyOneLeft,theHunter,aFlickerInTheDark,onlyIfYoureLucky,whatHaveYouDone,daughterOfMine,youLikeItDarker,theOrphanageByTheLake,patientTwelve,petiteAnglaise,safeEnough,sisters,diaryOfAWimpyKid,theWeddingPlannersDaughter,kidnapped,numberTheStars,theHungerGames,ofMiceAndMen,andThenThereWereNone};
-    Scanner scanner = new Scanner(System.in);
+        Book[] books = {theMaid, theGuestList, theSilentPatient, dontLetThemIn, theOnlyOneLeft, theHunter, aFlickerInTheDark, onlyIfYoureLucky, whatHaveYouDone, daughterOfMine, youLikeItDarker, theOrphanageByTheLake, patientTwelve, petiteAnglaise, safeEnough, sisters, diaryOfAWimpyKid, theWeddingPlannersDaughter, kidnapped, numberTheStars, theHungerGames, ofMiceAndMen, andThenThereWereNone};
+        Scanner scanner = new Scanner(System.in);
 
-    System.out.println("Welcome to Java Library! What would you like to do?");
-    System.out.println("Please choose from the following options:\n\t[1] Browse available books\n\t[2] Show checked out books\n\t[3] Exit");
-    int choice = scanner.nextInt();
-    scanner.nextLine();
-    if (choice == 1){
+        System.out.println("Welcome to Java Library! What would you like to do?");
+        System.out.println("Please choose from the following options:\n\t[1] Browse available books\n\t[2] Show checked out books\n\t[3] Exit");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (choice) {
+            case 1 -> {
+                listAvailableBooks(books, scanner);
+                break;
+            }
+            case 2 -> {
+                listCheckedOutBooks();
+                break;
+            }
+
+            case 3 -> System.out.println("See you next time!");
+            default -> System.out.println("Invalid Choice! Please enter 1, 2, or 3.");
+        }
+
+
+
+    }
+
+    public static void listAvailableBooks(Book[] books, Scanner scanner) {
+        System.out.println("Available books:\n");
         for (int i = 0; i < books.length; i++) {
-            if (books[i].isCheckedOut() == false){
+            if (books[i].isCheckedOut() == false) {
                 System.out.println(books[i].getTitle() + "\n\tID :" + books[i].getId() + "\n\tISBN" + books[i].getIsbn());
             }
         }
         System.out.println("Would you like to check one out? Please enter (Y/N).");
         String answer = scanner.nextLine();
-        if(answer.equalsIgnoreCase("Y")){
+        if (answer.equalsIgnoreCase("Y")) {
+            System.out.println("Please enter your name.");
+            String name = scanner.nextLine().trim();
             System.out.println("Please enter the title of the book you'd like to check out.");
-            String bookTitle = scanner.nextLine();
-        }else if (answer.equalsIgnoreCase("N")){
+            String bookTitle = scanner.nextLine().trim();
 
+            for (Book book : books) {
+                if (bookTitle.equalsIgnoreCase(book.getTitle())) {
+                    String borrowedBook = book.getTitle();
+                    book.checkOut(name);
+                    System.out.println("You have checked out" + borrowedBook + ". Have a good day!");
+                }
+            }
+        }else if (answer.equalsIgnoreCase("N")) {
+            System.out.println("Thank you for browsing, we hope to see you again soon!");
+        } else {
+            System.out.println("Please enter Y or N.");
         }
-    }else if(choice == 2){
-
-    } else if (choice == 3) {
-        System.out.println("See you next time!");
-    } else while (choice != 1 || choice != 2 || choice != 3){
-        System.out.println("Please enter 1, 2, or 3.");
-        choice= scanner.nextInt();
     }
+
+    public static void listCheckedOutBooks(){
+        System.out.println("Here are the books that are currently checked out:\n");
+        for (int i = 0; i < books.length; i++){
+            System.out.println(books[i].getTitle + " is checked out to " + books[i].getIsCheckedOutTo);
+        }
+
+
     }
 }
+
