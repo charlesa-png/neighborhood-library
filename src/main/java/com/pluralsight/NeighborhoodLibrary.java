@@ -51,7 +51,7 @@ public class NeighborhoodLibrary {
                     System.out.println("See you next time!");
                     running = false;
                 }
-                default -> System.out.println("Invalid Choice! Please enter 1, 2, or 3.");
+                default -> System.out.println("Invalid Choice! Please enter 1, 2, or 3.\n");
             }
         }
 
@@ -82,28 +82,31 @@ public class NeighborhoodLibrary {
                     System.out.println("Please enter the title of the book you'd like to check out.");
                     String bookTitle = scanner.nextLine().trim();
 
+                    boolean titleExists = false;
+
                     for (int i = 0; i < books.length; i++) {
                         if (bookTitle.equalsIgnoreCase(books[i].getTitle())) {
+                            titleExists = true;
                             if (books[i].isCheckedOut) {
-                                System.out.println("Sorry, that book is currently checked out to " + books[i].checkedOutTo + ". Please choose another book or try again later.");
+                                System.out.println("Sorry, that book is currently checked out to " + books[i].checkedOutTo + ". Please choose another book or try again later.\n");
                             } else {
                                 String borrowedBook = books[i].getTitle();
                                 books[i].checkOut(name);
-                                System.out.println("You have checked out " + borrowedBook + ". Have a good day!");
+                                System.out.println("You have checked out " + borrowedBook + ". Have a good day!\n");
                                 found = true;
                             }
                             break;
                         }
                     }
-                    if (found == false) {
-                        System.out.println("Sorry, I couldn't find that title! Please enter a title from our available books.");
+                    if (titleExists == false) {
+                        System.out.println("Sorry, I couldn't find that title! Please enter a title from our available books.\n");
                     }
                 }
             } else if (answer.equalsIgnoreCase("N")) {
                 validChoice = true;
-                System.out.println("Thank you for browsing, we hope to see you again soon!");
+                System.out.println("Thank you for browsing, we hope to see you again soon!\n");
             } else {
-                System.out.println("Please enter Y or N.");
+                System.out.println("Please enter Y or N.\n");
             }
         }
     }
@@ -121,7 +124,7 @@ public class NeighborhoodLibrary {
             }
         }
         if (anyCheckedOut == false){
-            System.out.println("All titles are available at this time. Why not check one out?");
+            System.out.println("All titles are available at this time. Why not check one out?\n");
             return;
         }
         System.out.println("Press C to check a book in or X to go back.");
@@ -137,20 +140,20 @@ public class NeighborhoodLibrary {
                             match = true;
                             books[i].isCheckedOut = false;
                             books[i].checkedOutTo = " ";
-                            System.out.println("Thank you, have a great day!");
+                            System.out.println("Thank you, have a great day!\n");
                             break;
                         }
                     }
                     if (match == false){
-                        System.out.println("Invalid ID number, please try again.");
+                        System.out.println("Invalid ID number, please try again.\n");
                     }
                 }
             }
             else if (input.equalsIgnoreCase("X")) {
-                System.out.println("Returning home...");
+                System.out.println("Returning home...\n");
             }
             else {
-                System.out.println("Please enter C or X");
+                System.out.println("Please enter C or X\n");
             }
     }
 }
