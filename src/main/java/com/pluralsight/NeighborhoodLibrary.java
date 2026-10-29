@@ -66,72 +66,92 @@ public class NeighborhoodLibrary {
             }
         }
         System.out.println("Would you like to check one out? Please enter (Y/N).");
-        String answer = scanner.nextLine();
-        if (answer.equalsIgnoreCase("Y")) {
-            System.out.println("Please enter your name.");
-            String name = scanner.nextLine().trim();
+        boolean validChoice = false;
 
-            boolean found = false;
-            while (found == false) {
-                System.out.println("Please enter the title of the book you'd like to check out.");
-                String bookTitle = scanner.nextLine().trim();
+        while (!validChoice) {
+            String answer = scanner.nextLine().trim();
 
-                for (int i = 0; i < books.length; i++) {
-                    if (bookTitle.equalsIgnoreCase(books[i].getTitle())) {
-                        if (books[i].isCheckedOut) {
-                            System.out.println("Sorry, that book is currently checked out to " + books[i].checkedOutTo + ". Please choose another book or try again later.");
-                        } else {
-                            String borrowedBook = books[i].getTitle();
-                            books[i].checkOut(name);
-                            System.out.println("You have checked out " + borrowedBook + ". Have a good day!");
-                            found = true;
+            if (answer.equalsIgnoreCase("Y")) {
+                validChoice = true;
+
+                System.out.println("Please enter your name.");
+                String name = scanner.nextLine().trim();
+
+                boolean found = false;
+                while (found == false) {
+                    System.out.println("Please enter the title of the book you'd like to check out.");
+                    String bookTitle = scanner.nextLine().trim();
+
+                    for (int i = 0; i < books.length; i++) {
+                        if (bookTitle.equalsIgnoreCase(books[i].getTitle())) {
+                            if (books[i].isCheckedOut) {
+                                System.out.println("Sorry, that book is currently checked out to " + books[i].checkedOutTo + ". Please choose another book or try again later.");
+                            } else {
+                                String borrowedBook = books[i].getTitle();
+                                books[i].checkOut(name);
+                                System.out.println("You have checked out " + borrowedBook + ". Have a good day!");
+                                found = true;
+                            }
+                            break;
                         }
-                        break;
+                    }
+                    if (found == false) {
+                        System.out.println("Sorry, I couldn't find that title! Please enter a title from our available books.");
                     }
                 }
-                if (found == false) {
-                    System.out.println("Sorry, I couldn't find that title! Please enter a title from our available books.");
-                }
+            } else if (answer.equalsIgnoreCase("N")) {
+                validChoice = true;
+                System.out.println("Thank you for browsing, we hope to see you again soon!");
+            } else {
+                System.out.println("Please enter Y or N.");
             }
-        } else if (answer.equalsIgnoreCase("N")) {
-            System.out.println("Thank you for browsing, we hope to see you again soon!");
-        } else {
-            System.out.println("Please enter Y or N.");
         }
     }
 
     public static void listCheckedOutBooks(Book[] books, Scanner scanner) {
+        boolean anyCheckedOut = false;
+
         for (Book book : books) {
-            if (book.isCheckedOut) {
-                System.out.println("Here are the books that are currently checked out:\n");
+            if (book.isCheckedOut()) {
+                if (anyCheckedOut == false) {
+                    System.out.println("Here are the books that are currently checked out:\n");
+                    anyCheckedOut = true;
+                }
                 System.out.println(book.getTitle() + " is checked out to " + book.getCheckedOutTo());
             }
         }
+        if (anyCheckedOut == false){
+            System.out.println("All titles are available at this time. Why not check one out?");
+            return;
+        }
         System.out.println("Press C to check a book in or X to go back.");
-        String input = scanner.nextLine();
-        for (int i = 0; i < books.length; i++) {
+        String input = scanner.nextLine().trim();
             if (input.equalsIgnoreCase("C")) {
                 boolean match = false;
-                while (match = false) {
+
+                while (match == false) {
                     System.out.println("Please enter the ID of the book you're checking in.");
                     int checkingIn = scanner.nextInt();
-
-                    if (books[i].getId() == checkingIn) {
-                        match = true;
-                        books[i].isCheckedOut = false;
-                        books[i].checkedOutTo = " ";
-                        System.out.println("Thank you, have a great day!");
-                    } else {
+                    for (int i = 0; i < books.length; i++) {
+                        if (books[i].getId() == checkingIn && books[i].isCheckedOut()) {
+                            match = true;
+                            books[i].isCheckedOut = false;
+                            books[i].checkedOutTo = " ";
+                            System.out.println("Thank you, have a great day!");
+                            break;
+                        }
+                    }
+                    if (match == false){
                         System.out.println("Invalid ID number, please try again.");
                     }
                 }
-            }else if (input.equalsIgnoreCase("X")) {
+            }
+            else if (input.equalsIgnoreCase("X")) {
                 System.out.println("Returning home...");
-            } else {
+            }
+            else {
                 System.out.println("Please enter C or X");
             }
-        }
-        System.out.println("All titles are available at this time. Why not check one out?");
     }
 }
 
