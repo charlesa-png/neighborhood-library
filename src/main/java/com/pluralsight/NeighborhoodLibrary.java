@@ -120,7 +120,7 @@ public class NeighborhoodLibrary {
                     System.out.println("Here are the books that are currently checked out:\n");
                     anyCheckedOut = true;
                 }
-                System.out.println(book.getTitle() + " is checked out to " + book.getCheckedOutTo());
+                System.out.println(book.getTitle() + " is checked out to " + book.getCheckedOutTo()+"\n\tID: " + book.getId() + "\n\tISBN: " + book.getIsbn());
             }
         }
         if (anyCheckedOut == false){
